@@ -5,7 +5,7 @@ function checkForAuthenticationCookie(cookieName){
         const cookieValue = req.cookies[cookieName];
         if(!cookieValue){
             return next()
-        }
+        } 
 
         try {
             const userPayload = verifyToken(cookieValue);

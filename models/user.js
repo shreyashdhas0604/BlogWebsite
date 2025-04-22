@@ -51,7 +51,6 @@ userSchema.static("matchPasswordAndGenerateToken",async function(email,password)
     if(!user) throw new Error('Email is incorrect');
     const salt = user.salt;
     const hashPassword = createHmac('sha256',salt).update(password).digest('hex');
-    
     if(hashPassword !== user.password) throw new Error('Password is incorrect');
     const token = createTokenForUser(user);
     return token;
